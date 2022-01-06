@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System;
+using System.Windows.Forms;
+using System.Data.Sql;
+using System.Data.SqlClient;
 using System.Data;
-using System.Drawing;
+using MySql.Data.MySqlClient;
 using System.Linq;
 using System.Text;
+using MySql;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace M16_EXAME202112_PSI18H_AndreDurao_2218041
 {
@@ -14,6 +17,9 @@ namespace M16_EXAME202112_PSI18H_AndreDurao_2218041
     {
         public static string SetValueForText1 = ""; //string para o numero de edições
         public static string DataText = ""; //string para a data da assinatura
+
+        ////Ligação á base de dados
+        string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=sub;";
 
         public Form4()
         {
@@ -51,6 +57,16 @@ namespace M16_EXAME202112_PSI18H_AndreDurao_2218041
 
             DataText = data; //Tudo o que está desta linha para cima foi feito para criar uma ligação entre este forms com o forms 3 na data de renovação da subscrição
             SetValueForText1 = textBox2.Text; //Ajudou na passagem de string deste forms para o forms 3
+
+            //Ligação á base de dados
+            MySqlConnection conn = new MySqlConnection(@"datasource=127.0.0.1;port=3306;username=root;password=;database=sub;");
+            MySqlCommand cmd = new MySqlCommand($"INSERT INTO sub(data, edicao) VALUES (@data, @edicao)", conn);
+            cmd.Parameters.AddWithValue("@data", textBox1.Text);
+            cmd.Parameters.AddWithValue("@edicao", data);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
 
             //usei isto para mudar os forms e escondelos após usados
             this.Hide();

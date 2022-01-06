@@ -18,7 +18,7 @@ namespace M16_EXAME202112_PSI18H_AndreDurao_2218041
         public static string DataText = ""; //string para a data da assinatura
 
 
-        //MySQL não tou a conseguir fazer a ligação
+        ////Ligação á base de dados
         string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=sub;";
         public Form2()
         {
@@ -64,7 +64,7 @@ namespace M16_EXAME202112_PSI18H_AndreDurao_2218041
             SetValueForText1 = textBox2.Text; //Ajudou na passagem de string deste forms para o forms 3
 
 
-            //MySQL não tou a conseguir fazer a ligação
+            //Ligação á base de dados
             MySqlConnection conn = new MySqlConnection(@"datasource=127.0.0.1;port=3306;username=root;password=;database=sub;");
             MySqlCommand cmd = new MySqlCommand($"INSERT INTO sub(data, edicao) VALUES (@data, @edicao)", conn);
             cmd.Parameters.AddWithValue("@data", textBox1.Text);
