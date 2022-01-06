@@ -19,7 +19,7 @@ namespace M16_EXAME202112_PSI18H_AndreDurao_2218041
 
 
         //MySQL não tou a conseguir fazer a ligação
-        /* string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=sub;";*/
+        string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=sub;";
         public Form2()
         {
             InitializeComponent();     
@@ -65,14 +65,14 @@ namespace M16_EXAME202112_PSI18H_AndreDurao_2218041
 
 
             //MySQL não tou a conseguir fazer a ligação
-           /* MySqlConnection conn = new MySqlConnection(@"datasource=127.0.0.1;port=3306;username=root;password=;database=sub;");
-            MySqlCommand cmd = new MySqlCommand($"INSERT INTO (data, edicao) VALUES (@data, @edicao)", conn);
+            MySqlConnection conn = new MySqlConnection(@"datasource=127.0.0.1;port=3306;username=root;password=;database=sub;");
+            MySqlCommand cmd = new MySqlCommand($"INSERT INTO sub(data, edicao) VALUES (@data, @edicao)", conn);
             cmd.Parameters.AddWithValue("@data", textBox1.Text);
             cmd.Parameters.AddWithValue("@edicao", data);
             conn.Open();
             cmd.ExecuteNonQuery();
 
-            conn.Close();*/
+            conn.Close();
 
             //usei isto para mudar os forms e escondelos após usados
             this.Hide();
